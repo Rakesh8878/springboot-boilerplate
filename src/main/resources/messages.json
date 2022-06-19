@@ -1,0 +1,55 @@
+{
+	"messages": {
+		"success": {
+			"code": "SUCCESS",
+			"text": "Success",
+			"detail": ""
+		},
+		"nullPointerException": {
+			"code": "REQUEST_FAILED",
+			"text": "REQUEST_FAILED",
+			"detail": ""
+		},		
+		"noSuchFieldException": {
+			"code": "REQUEST_FAILED",
+			"text": "REQUEST_FAILED",
+			"detail": ""
+		},
+		"accessDeniedException": {
+			"code": "ACCESS_DENIED",
+			"text": "ACCESS_DENIED",
+			"detail": ""
+		},
+		"methodArgumentNotValidException": {
+			"code": "VALIDATION_ERROR",
+			"text": "VALIDATION_ERROR",
+			"detail": ""
+		},
+		"validationException": {
+			"code": "VALIDATION_ERROR",
+			"text": "VALIDATION_ERROR",
+			"detail": ""
+		},
+		"httpServerErrorException": {
+			"code": "HTTP_SERVER_ERROR",
+			"text": "HTTP_SERVER_ERROR",
+			"detail": "External connection error"
+		},
+		"exception": {
+			"code": "REQUEST_FAILED",
+			"text": "REQUEST_FAILED",
+			"detail": ""
+		},
+		"missingServletRequestParameterException": {
+			"code": "MISSING_REQUEST_PARAMETERS",
+			"text": "Required request parameter is missing",
+			"detail": ""
+		},
+		"customException": {
+			"code": "REQUEST_FAILED",
+			"text": "REQUEST_FAILED",
+			"detail": ""
+		}
+	}
+}
+
