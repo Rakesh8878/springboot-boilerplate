@@ -5,10 +5,13 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
+import com.springboot.boilerplate.Logger.RequestAsynchronousLoggingServiceImpl;
 import com.springboot.boilerplate.Mapper.UserDetailMapper;
 import com.springboot.boilerplate.Mapper.UserMapper;
 import com.springboot.boilerplate.dto.UserDto;
@@ -20,6 +23,8 @@ import com.springboot.boilerplate.repository.UserRepository;
 @Service
 public class UserServiceImpl implements UserService {
 
+	private static Logger log = LoggerFactory.getLogger(UserServiceImpl.class);
+	
 	@Autowired
 	private UserRepository userRepository; 
 	
@@ -43,7 +48,7 @@ public class UserServiceImpl implements UserService {
 			User user = itr.next();
 			userDtos.add(userMapper.mapFromUser(user));
 		}
-		System.out.println("Redis Enabled");
+		log.info("Redis Enabled");
 		return userDtos;
 	}
 

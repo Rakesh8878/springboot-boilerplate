@@ -12,6 +12,8 @@ import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+import com.springboot.boilerplate.Logger.ApiLogFilter;
+import com.springboot.boilerplate.Logger.ApiLogger;
 import com.springboot.boilerplate.constant.PublicUrl;
 import com.springboot.boilerplate.security.service.UserDetailsServiceImpl;
 import com.springboot.boilerplate.security.util.JwtFilter;
@@ -24,6 +26,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	
     @Autowired
     private JwtFilter jwtFilter;
+    
+	@Autowired
+	ApiLogFilter apiLogFilter;
     
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -44,7 +49,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
             .sessionManagement()
             .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
             .and()
-            .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
+            .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class)
+			.addFilterAfter(apiLogFilter, UsernamePasswordAuthenticationFilter.class);
     }
 	
 	@Bean
