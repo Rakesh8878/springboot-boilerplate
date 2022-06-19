@@ -12,6 +12,7 @@ import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+import com.springboot.boilerplate.constant.PublicUrl;
 import com.springboot.boilerplate.security.service.UserDetailsServiceImpl;
 import com.springboot.boilerplate.security.util.JwtFilter;
 
@@ -35,8 +36,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 			.csrf()
 			.disable()
 			.authorizeRequests()
-			.antMatchers("/", "/authenticate")
-			.permitAll()
+			.antMatchers(PublicUrl.swaggerArray).permitAll()
+            .antMatchers(PublicUrl.endpointArray).permitAll()
 			.anyRequest()
 			.authenticated()
             .and()
