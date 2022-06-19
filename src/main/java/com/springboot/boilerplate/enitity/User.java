@@ -50,7 +50,7 @@ public class User extends Base implements Serializable {
 	@Column(name = "role", nullable = false) 
 	private Role role;
 	
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "user_detail_id", referencedColumnName = "id")
     private UserDetail userDetail;
 
