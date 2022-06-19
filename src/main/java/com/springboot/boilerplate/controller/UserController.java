@@ -3,6 +3,11 @@
  */
 package com.springboot.boilerplate.controller;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,6 +19,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.springboot.boilerplate.dto.UserDto;
+import com.springboot.boilerplate.service.UserService;
+
 /**
  * @author workstation
  * User controller
@@ -23,34 +31,37 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(path = "api/v1/users")
 public class UserController {
 
+	@Autowired
+	private UserService userService;
+	
 	@GetMapping("/")
-	public String getUsers() {
-		return "Here is list of users";
+	public ResponseEntity<List<UserDto>> getUsers() {
+		return new ResponseEntity<>(userService.getUsers(), HttpStatus.OK);
 	}
 	
 	@PostMapping("/")
-	public String addUser(@RequestBody String body) {
-		return "One user added";
+	public ResponseEntity<UserDto> addUser(@RequestBody UserDto userDto) {
+		return new ResponseEntity<>(userService.addUser(userDto), HttpStatus.CREATED);
 	}
 	
 	@GetMapping("/{id}")
-	public String getUserById(@PathVariable(name = "id", required = true) String id) {
-		return "Here is user which you asked for.";
+	public ResponseEntity<UserDto> getUserById(@PathVariable(name = "id", required = true) Long id) throws Exception {
+		return new ResponseEntity<>(userService.getUser(id), HttpStatus.OK);
 	}
 	
 	@PutMapping("/{id}")
-	public String updateUser(@PathVariable(name = "id", required = true) String id, @RequestBody String body) {
-		return "User is updated successfully.";
+	public ResponseEntity<UserDto> updateUser(@PathVariable(name = "id", required = true) Long id, @RequestBody UserDto userDto) throws Exception {
+		return new ResponseEntity<>(userService.updateUser(id, userDto), HttpStatus.OK);
 	}
 	
 	@PatchMapping("/{id}")
-	public String modifyUser(@PathVariable(name = "id", required = true) String id, @RequestBody String body) {
-		return "User is modified successfully.";
+	public ResponseEntity<String> updatePassword(@PathVariable(name = "id", required = true) Long id, @RequestBody UserDto userDto) throws Exception {
+		return new ResponseEntity<>(userService.updatePassword(id, userDto), HttpStatus.OK);
 	}
 	
 	@DeleteMapping("/{id}")
-	public String deleteUser(@PathVariable(name = "id", required = true) String id) {
-		return "User is deleted successfully.";
+	public ResponseEntity<String> deleteUser(@PathVariable(name = "id", required = true) Long id) throws Exception {
+		return new ResponseEntity<>(userService.removeUser(id), HttpStatus.OK);
 	}
 	
 }
