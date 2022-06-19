@@ -1,7 +1,5 @@
 package com.springboot.boilerplate.dto;
 
-import java.util.Date;
-
 import com.springboot.boilerplate.constant.Gender;
 
 import lombok.AllArgsConstructor;

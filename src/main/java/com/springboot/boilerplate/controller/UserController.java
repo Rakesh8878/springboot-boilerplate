@@ -5,6 +5,8 @@ package com.springboot.boilerplate.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -50,7 +52,7 @@ public class UserController {
 	}
 	
 	@PutMapping("/{id}")
-	public ResponseEntity<UserDto> updateUser(@PathVariable(name = "id", required = true) Long id, @RequestBody UserDto userDto) throws Exception {
+	public ResponseEntity<UserDto> updateUser(@PathVariable(name = "id", required = true) Long id, @Valid @RequestBody UserDto userDto) throws Exception {
 		return new ResponseEntity<>(userService.updateUser(id, userDto), HttpStatus.OK);
 	}
 	

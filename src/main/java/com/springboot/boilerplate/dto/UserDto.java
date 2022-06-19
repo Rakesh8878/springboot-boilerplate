@@ -1,5 +1,6 @@
 package com.springboot.boilerplate.dto;
 
+import javax.validation.constraints.Email;
 import com.springboot.boilerplate.constant.Role;
 
 import lombok.AllArgsConstructor;
@@ -15,6 +16,7 @@ public class UserDto {
 
 	private Long id;
 	private String userName;
+	@Email(message = "Provide vaild email")
 	private String email;
 	private String password;
 	private Role role;
