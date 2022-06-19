@@ -19,21 +19,25 @@
 		<model.mapper.version>3.0.0</model.mapper.version>
 		<springdoc.openapi.version>1.5.12</springdoc.openapi.version>
 		<jjwt.version>0.9.1</jjwt.version>
+		<commons.io.version>2.11.0</commons.io.version>
 	</properties>
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
+		<!-- Spring Security -->
 		<dependency>
       		<groupId>org.springframework.boot</groupId>
       		<artifactId>spring-boot-starter-security</artifactId>
     	</dependency>
+    	<!-- JWT -->
     	<dependency>
 			<groupId>io.jsonwebtoken</groupId>
 			<artifactId>jjwt</artifactId>
 			<version>${jjwt.version}</version>
 		</dependency>
+		<!-- Databse -->
 		<dependency>
       		<groupId>org.springframework.boot</groupId>
       		<artifactId>spring-boot-starter-data-jpa</artifactId>
@@ -43,23 +47,40 @@
       		<artifactId>mysql-connector-java</artifactId>
       		<scope>runtime</scope>
     	</dependency>
+    	<!-- Object Mapper -->
     	<dependency>
     		<groupId>org.modelmapper</groupId>
     		<artifactId>modelmapper</artifactId>
     		<version>${model.mapper.version}</version>
 		</dependency>
+		<!-- Swagger -->
 		<dependency>
       		<groupId>org.springdoc</groupId>
       		<artifactId>springdoc-openapi-ui</artifactId>
       		<version>${springdoc.openapi.version}</version>
    		</dependency>
-		
+		<dependency>
+   			<groupId>org.springdoc</groupId>
+   			<artifactId>springdoc-openapi-security</artifactId>
+   			<version>${springdoc.openapi.version}</version>
+		</dependency>
+		<!-- Redis -->
+        <dependency>
+    		<groupId>org.springframework.boot</groupId>
+    		<artifactId>spring-boot-starter-cache</artifactId>
+		</dependency>
+		<dependency>
+    		<groupId>org.springframework.boot</groupId>
+    		<artifactId>spring-boot-starter-data-redis</artifactId>
+		</dependency>
+        
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
 			<scope>runtime</scope>
 			<optional>true</optional>
 		</dependency>
+		<!-- Lombok -->
 		<dependency>
       		<groupId>org.projectlombok</groupId>
       		<artifactId>lombok</artifactId>
@@ -70,6 +91,17 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<!-- Object to JSON seializer/deserializer -->
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+		</dependency>
+		<dependency>
+    		<groupId>commons-io</groupId>
+    		<artifactId>commons-io</artifactId>
+    		<version>${commons.io.version}</version>
+		</dependency>
+		
 	</dependencies>
 
 	<build>

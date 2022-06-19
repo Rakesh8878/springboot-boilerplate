@@ -1,5 +1,7 @@
 package com.springboot.boilerplate.dto;
 
+import java.io.Serializable;
+
 import com.springboot.boilerplate.constant.Gender;
 
 import lombok.AllArgsConstructor;
@@ -11,7 +13,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class UserDetailDto {
+public class UserDetailDto implements Serializable {
+	
+	private static final long serialVersionUID = 1L;
 	
 	private Long id;
 	private String firstName;

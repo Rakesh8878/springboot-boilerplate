@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import com.springboot.boilerplate.Mapper.UserDetailMapper;
@@ -33,6 +34,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
+	@Cacheable(value = "getUsersCache")
 	public List<UserDto> getUsers() {
 		List<UserDto> userDtos = new ArrayList<>();
 		List<User> users = userRepository.findAll();
@@ -41,6 +43,7 @@ public class UserServiceImpl implements UserService {
 			User user = itr.next();
 			userDtos.add(userMapper.mapFromUser(user));
 		}
+		System.out.println("Redis Enabled");
 		return userDtos;
 	}
 

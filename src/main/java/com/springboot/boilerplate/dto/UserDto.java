@@ -1,5 +1,7 @@
 package com.springboot.boilerplate.dto;
 
+import java.io.Serializable;
+
 import javax.validation.constraints.Email;
 import com.springboot.boilerplate.constant.Role;
 
@@ -12,8 +14,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class UserDto {
+public class UserDto implements Serializable {
 
+	private static final long serialVersionUID = 1L;
+	
 	private Long id;
 	private String userName;
 	@Email(message = "Provide vaild email")
