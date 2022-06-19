@@ -13,8 +13,6 @@ import org.springframework.stereotype.Service;
 
 import com.springboot.boilerplate.security.dto.AuthenticatedUser;
 
-import lombok.RequiredArgsConstructor;
-
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService  {
 
