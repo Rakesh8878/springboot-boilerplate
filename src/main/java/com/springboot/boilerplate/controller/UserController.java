@@ -9,6 +9,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -36,32 +37,32 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 	
-	@GetMapping("/")
+	@GetMapping(value = "/", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<UserDto>> getUsers() {
 		return new ResponseEntity<>(userService.getUsers(), HttpStatus.OK);
 	}
 	
-	@PostMapping("/")
-	public ResponseEntity<UserDto> addUser(@RequestBody UserDto userDto) {
+	@PostMapping(value = "/", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<UserDto> addUser(@Valid @RequestBody UserDto userDto) {
 		return new ResponseEntity<>(userService.addUser(userDto), HttpStatus.CREATED);
 	}
 	
-	@GetMapping("/{id}")
+	@GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<UserDto> getUserById(@PathVariable(name = "id", required = true) Long id) throws Exception {
 		return new ResponseEntity<>(userService.getUser(id), HttpStatus.OK);
 	}
 	
-	@PutMapping("/{id}")
+	@PutMapping(value = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<UserDto> updateUser(@PathVariable(name = "id", required = true) Long id, @Valid @RequestBody UserDto userDto) throws Exception {
 		return new ResponseEntity<>(userService.updateUser(id, userDto), HttpStatus.OK);
 	}
 	
-	@PatchMapping("/{id}")
+	@PatchMapping(value = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.TEXT_PLAIN_VALUE)
 	public ResponseEntity<String> updatePassword(@PathVariable(name = "id", required = true) Long id, @RequestBody UserDto userDto) throws Exception {
 		return new ResponseEntity<>(userService.updatePassword(id, userDto), HttpStatus.OK);
 	}
-	
-	@DeleteMapping("/{id}")
+
+	@DeleteMapping(value = "/{id}", produces = MediaType.TEXT_PLAIN_VALUE)
 	public ResponseEntity<String> deleteUser(@PathVariable(name = "id", required = true) Long id) throws Exception {
 		return new ResponseEntity<>(userService.removeUser(id), HttpStatus.OK);
 	}
