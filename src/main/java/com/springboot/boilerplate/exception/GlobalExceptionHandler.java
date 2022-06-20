@@ -25,8 +25,7 @@ public class GlobalExceptionHandler {
 	
 	private static Logger log = LoggerFactory.getLogger(GlobalExceptionHandler.class);
 
-    private static final String METHOD_ARGUMENT_NOT_VALID_EXCEPTION = "methodArgumentNotValidException";
-    private static final String GLOBAL_EXCEPTION_HANDLER = "GlobalExceptionHandler";
+	static final String GLOBAL_EXCEPTION_HANDLER = "GlobalExceptionHandler";
 	
 	@Autowired
 	ErrorMessageConfiguration messageConfig;
