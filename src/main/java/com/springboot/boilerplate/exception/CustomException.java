@@ -21,8 +21,8 @@ private static final long serialVersionUID = 1L;
 		this.status = status;
 	}
 	
-	public AppResource<Object> getAppResource() {
-		return new AppResource<>(requestBody, payload, messages, status);
+	public ErrorResponseHandler<Object> getAppResource() {
+		return new ErrorResponseHandler<>(requestBody, payload, messages, status);
 	}
 
 }
